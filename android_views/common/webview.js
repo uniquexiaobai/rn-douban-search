@@ -2,17 +2,19 @@
  * 使用WebView封装了豆瓣的WebApp页面
  */
 
-var React = require('react-native');
-var Util = require('./util');
-var Header = require('./header');
+import Util = require('./util');
+import Header = require('./header');
 
-var {
+import React, {
+  Component,
+  View,
   WebView,
-  View
-} = React;
+} from 'react-native';
 
-module.exports = React.createClass({
-  render: function() {
+export default class extends Component {
+
+  render() {
+
     return (
       <View>
 
@@ -26,7 +28,7 @@ module.exports = React.createClass({
 
         <WebView
           contentInset={{top: -40}}
-          startInLoadingState={true}               
+          startInLoadingState={true}
           style={{
             width: Util.size.width
             height: Util.size.height - 50
@@ -37,5 +39,7 @@ module.exports = React.createClass({
 
       </View>
     );
+
   }
-})
+
+};

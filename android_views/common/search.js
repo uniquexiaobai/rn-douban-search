@@ -2,28 +2,30 @@
  * 搜索框组件
  */
 
-var React = require('react-native');
-var Util = require('./util');
+import Util from './util';
 
-var {
+import React, {
+  Component,
   StyleSheet,
-  Text,
   View,
-  TabBarIOS,
-  TextInput
-} = React;
+  TextInput,
+} from 'react-native';
 
-module.exports = React.createClass({
-  render: function() {
+export default class extends Component {
+
+  render() {
+
     return (
       <View style={styles.flex_1}>
         <TextInput style={[styles.flex_1, styles.input]} {...this.props}/>
       </View>
     );
-  }
-});
 
-var styles = StyleSheet.create({
+  }
+
+};
+
+const styles = StyleSheet.create({
   flex_1: {
     flex: 1
   },

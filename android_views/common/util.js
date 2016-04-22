@@ -2,23 +2,31 @@
  *  Util模块工具类
  *  主要提供工具方法
  */
+import Dimensions from 'Dimensions';
+import PixelRatio from 'PixelRatio';
 
-var React = require('react-native');
-var Dimensions = require('Dimensions');
-var PixelRatio = require('PixelRatio');
-var ProgressBarAndroid = require('ProgressBarAndroid');
+import React, {
+  ProgressBarAndroid,
+} from 'react-native';
 
-module.exports = {
-  // 最小线宽
+export default {
+
+  /**
+   * 获取屏幕最小线宽
+   */
   pixel: 1 / PixelRatio.get(),
 
-  // 屏幕尺寸
+  /**
+   * 获取屏幕尺寸
+   */
   size: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
+    height: Dimensions.get('window').height,
   },
 
-  // 加载动画
+  /**
+   * Android 加载动画
+   */
   loading: <ProgressBarAndroid
     styleAttr="Inverse"
     color="red"
@@ -31,7 +39,7 @@ module.exports = {
    * @param  {function} failCallback    失败时的回调函数
    * @return {[type]}                 [description]
    */
-  get: function(url, successCallback, failCallback) {
+  get(url, successCallback, failCallback) {
     fetch(url)
       .then((response) => response.text())
       .then((responseText) => {
@@ -41,4 +49,5 @@ module.exports = {
         failCallback(err);
       });
   },
+
 };

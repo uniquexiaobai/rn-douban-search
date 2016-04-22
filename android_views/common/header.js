@@ -2,27 +2,27 @@
  * 公共头部
  */
 
-var React = require('react-native');
-var Icon = require('./left_icon');
-var Util = require('./../common/util');
+import Icon from './left_icon';
+import Util from './../common/util';
 
-var {
+import React, {
+  Component,
   StyleSheet,
   Text,
   View,
   ListView,
-  Image,
   ScrollView,
-  TouchableOpacity
-} = React;
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
-module.exports = React.createClass({
+export default class extends Component {
 
-  _pop: function() {
+  _pop() {
     this.props.navigator.pop();
-  },
+  }
 
-  render: function() {
+  render() {
 
     var obj = this.props.initObj;
 
@@ -48,9 +48,9 @@ module.exports = React.createClass({
       </View>
     );
   }
-});
+};
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   row: {
     flexDirection: 'row'
   },

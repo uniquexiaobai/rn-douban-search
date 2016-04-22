@@ -4,9 +4,9 @@
  *
  */
 
-var baseURL = 'https://api.douban.com/v2/';
+const baseURL = 'https://api.douban.com/v2/';      // API 前缀
 
-module.exports = {
+export default {
 
   // 图书搜索
   book_search: baseURL + 'book/search',
@@ -23,4 +23,4 @@ module.exports = {
   // 电影详情
   movie_search_id: baseURL + 'movie/subject/',
 
-}
+};

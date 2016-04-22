@@ -2,35 +2,40 @@
  * 图书详情页
  */
 
-var React = require('react-native');
-var Util = require('../common/util');
-var ServiceURL = require('../common/service');
-var BookItem = require('./book_items');
-var Header = require('../common/header');
+import Util from '../common/util';
+import ServiceURL from '../common/service';
+import BookItem from './book_items';
+import Header from '../common/header';
 
-var {
+import React, {
+  Component,
   StyleSheet,
   Text,
   View,
   ListView,
-  Image,
   ScrollView,
+  Image,
   TouchableOpacity,
-} = React;
+} from 'react-native';
 
-module.exports = React.createClass({
-  getInitialState: function() {
+export default class extends Component {
+  getInitialState() {
     return {
       data: null
     }
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <ScrollView style={styles.m10}>
+
         {
+
           this.state.data
           ?
+
             <View>
+
               <Header
                 navigator={this.props.navigator}
                 initObj={{
@@ -38,27 +43,38 @@ module.exports = React.createClass({
                   title: this.state.data.title
                 }}
               />
+
               <BookItem row={this.state.data}/>
+
               <View>
                 <Text style={[styles.title]}>图书简介</Text>
                 <Text style={[styles.text]}>{this.state.data.summary}</Text>
               </View>
+
               <View>
                 <Text style={[styles.title]}>作者简介</Text>
                 <Text style={[styles.text]}>{this.state.data.author_intro}</Text>
               </View>
+
               <View style={{height:50}}></View>
+
             </View>
+
           : Util.loading
+
         }
+
       </ScrollView>
     );
-  },
+  }
 
-  componentDidMount: function() {
+  // 页面加载完成后请求书籍的详细信息
+  componentDidMount() {
+
     var id = this.props.id;
     var that = this;
     var url = ServiceURL.book_search_id + '/' + id;
+
     Util.get(url, function(data) {
       that.setState({
         data: data
@@ -66,10 +82,12 @@ module.exports = React.createClass({
     }, function(err) {
       alert(err);
     });
-  }
-});
 
-var styles = StyleSheet.create({
+  }
+
+};
+
+const styles = StyleSheet.create({
   m10: {
     flex: 1,
   },

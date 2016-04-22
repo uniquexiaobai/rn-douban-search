@@ -2,21 +2,25 @@
  * 图书列表组件
  */
 
-var React = require('react-native');
-var Util = require('../common/util')
+import React from 'react-native';
+import Util from '../common/util';
 
-var {
+import React, {
+  Component,
   StyleSheet,
   Text,
   View,
   ListView,
   Image,
   TouchableOpacity,
-} = React;
+} from 'react-native';
 
-module.exports = React.createClass({
-  render: function() {
+export default class extends Component {
+
+  render() {
+
     var row = this.props.row;
+
     return (
       <TouchableOpacity style={[styles.row, styles.item]} {...this.props}>
 
@@ -58,9 +62,9 @@ module.exports = React.createClass({
       </TouchableOpacity>
     );
   }
-});
+};
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },

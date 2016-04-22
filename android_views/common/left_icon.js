@@ -2,27 +2,31 @@
  * 公共头部中的回退按钮
  */
 
-var React = require('react-native');
-var Util = require('./util');
+import Util = require('./util');
 
-var {
+import React, {
+  Component,
   StyleSheet,
   Text,
-  View
-} = React;
+  View,
+} from 'react-native';
 
-module.exports = React.createClass({
-  render: function() {
+export default calss extends Component {
+
+  render() {
+
     return (
       <View>
         <View style={styles.go}>
         </View>
       </View>
     );
-  }
-});
 
-var styles = StyleSheet.create({
+  }
+
+};
+
+const styles = StyleSheet.create({
   go: {
     borderLeftWidth: 4 * Util.pixel,
     borderBottomWidth: 4 * Util.pixel,
@@ -30,6 +34,6 @@ var styles = StyleSheet.create({
     height: 15,
     transform: [{rotate: '45deg'}],
     borderColor: '#fff',
-    marginLeft: 10
-  }
+    marginLeft: 10,
+  },
 });
