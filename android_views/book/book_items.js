@@ -2,7 +2,6 @@
  * 图书列表组件
  */
 
-import React from 'react-native';
 import Util from '../common/util';
 
 import React, {

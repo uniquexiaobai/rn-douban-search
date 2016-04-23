@@ -22,15 +22,16 @@ import React, {
 
 export default class extends Component {
 
-  getInitialState() {
+  constructor(props) {
 
+    super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-    return {
+    this.state = {
       datasource: ds.cloneWithRows([]),
       keywords: 'Java语言',
       show: false
-    };
+    }
 
   }
 
@@ -39,16 +40,13 @@ export default class extends Component {
     return (
       <ScrollView style={styles.flex_1}>
 
-        // 头部搜索组件
         <View style={[styles.search, styles.row]}>
 
-          // 搜索框
           <View style={styles.flex_1}>
-            <Search placeholder="请输入图书的名称" onChangeText={this._changeText}/>
+            <Search placeholder="请输入图书的名称" onChangeText={this._changeText.bind(this)}/>
           </View>
 
-          // 搜索按钮
-          <TouchableOpacity style={styles.btn} onPress={this._search}>
+          <TouchableOpacity style={styles.btn} onPress={this._search.bind(this)}>
             <Text style={styles.fontFFF}>搜索</Text>
           </TouchableOpacity>
 
@@ -58,7 +56,7 @@ export default class extends Component {
           this.state.show ?
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this._renderRow}
+            renderRow={this._renderRow.bind(this)}
           />
           : Util.loading
         }
@@ -68,8 +66,20 @@ export default class extends Component {
 
   }
 
+  // 每条图书条目点击事件，点击后路由切换到详情页
+  _loadPage(id) {
+
+    this.props.navigator.push({
+      component: BookDetail,
+      passProps: {
+        id: id
+      }
+    });
+
+  }
+
   // 渲染图书列表模板
-  _renderRow() {
+  _renderRow(row) {
     return (
       <BookItem row={row} onPress={this._loadPage.bind(this, row.id)}/>
     );
@@ -80,15 +90,27 @@ export default class extends Component {
     this.getData();
   }
 
+  // 搜索框中关键字改变事件
+  _changeText(val) {
+    this.setState({
+      keywords: val
+    });
+  }
+
+  // 搜索按钮点击后触发事件
+  _search() {
+    this.getData();
+  }
+
   // 根据关键字查询
-  getDate() {
+  getData() {
 
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
     var baseURL = ServiceURL.book_search + '?count=10&q=' + this.state.keywords;
 
     // 请求数据前 loading
-    that.setState({
+    this.setState({
       show: false
     });
 
@@ -113,28 +135,6 @@ export default class extends Component {
 
     });
 
-  }
-
-  // 搜索框中关键字改变事件
-  _changeText() {
-    this.setState({
-      keywords: val
-    });
-  }
-
-  // 搜索按钮点击后触发事件
-  _search() {
-    this.getData();
-  }
-
-  // 每条图书条目点击事件，点击后路由切换到详情页
-  _loadPage() {
-    this.props.navigator.push({
-      component: BookDetail,
-      passProps: {
-        id: id
-      }
-    });
   }
 
 };

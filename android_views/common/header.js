@@ -29,7 +29,7 @@ export default class extends Component {
     return (
       <View style={[styles.header, styles.row, styles.center]}>
 
-        <TouchableOpacity style={[styles.row, styles.center]} onPress={this._pop}>
+        <TouchableOpacity style={[styles.row, styles.center]} onPress={this._pop.bind(this)}>
           <Icon/>
           <Text style={styles.fontFFF}>{obj.backName}</Text>
         </TouchableOpacity>

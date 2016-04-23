@@ -19,10 +19,12 @@ import React, {
 } from 'react-native';
 
 export default class extends Component {
-  getInitialState() {
-    return {
+
+  constructor(props) {
+    super(props);
+    this.state = {
       data: null
-    }
+    };
   }
 
   render() {
@@ -72,8 +74,8 @@ export default class extends Component {
   componentDidMount() {
 
     var id = this.props.id;
-    var that = this;
     var url = ServiceURL.book_search_id + '/' + id;
+    var that = this;
 
     Util.get(url, function(data) {
       that.setState({

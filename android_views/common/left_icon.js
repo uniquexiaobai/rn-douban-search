@@ -2,7 +2,7 @@
  * 公共头部中的回退按钮
  */
 
-import Util = require('./util');
+import Util from './util';
 
 import React, {
   Component,
@@ -11,7 +11,7 @@ import React, {
   View,
 } from 'react-native';
 
-export default calss extends Component {
+export default class extends Component {
 
   render() {
 
