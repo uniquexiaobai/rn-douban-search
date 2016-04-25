@@ -1,6 +1,6 @@
 
 /**
- * 图书列表组件
+ *  图书列表组件
  */
 
 import Search from '../common/search';
@@ -28,9 +28,9 @@ export default class extends Component {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     this.state = {
-      datasource: ds.cloneWithRows([]),
-      keywords: 'Java语言',
-      show: false
+      datasource: ds.cloneWithRows([]),                   // 承载请求到的数据
+      keywords: 'C语言',                                  // 承载搜索的关键字
+      show: false                                         // 控制是否显示 loading 动画
     }
 
   }
@@ -66,7 +66,7 @@ export default class extends Component {
 
   }
 
-  // 每条图书条目点击事件，点击后路由切换到详情页
+  // 每条图书条目点击事件，点击后路由切换到图书详情页
   _loadPage(id) {
 
     this.props.navigator.push({
@@ -78,43 +78,43 @@ export default class extends Component {
 
   }
 
-  // 渲染图书列表模板
+  // 定义渲染图书 item 的模板
   _renderRow(row) {
     return (
       <BookItem row={row} onPress={this._loadPage.bind(this, row.id)}/>
     );
   }
 
-  // 第一次页面加载完成后请求数据
+  // 第一次页面加载完成后请求一次数据
   componentDidMount() {
     this.getData();
   }
 
-  // 搜索框中关键字改变事件
+  // 搜索框中搜索关键字改变触发此事件
   _changeText(val) {
     this.setState({
       keywords: val
     });
   }
 
-  // 搜索按钮点击后触发事件
+  // 搜索按钮点击后触发此事件，请求图书数据
   _search() {
     this.getData();
   }
 
-  // 根据关键字查询
+  // 根据关键字，从豆瓣 API 请求数据
   getData() {
 
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
-    var baseURL = ServiceURL.book_search + '?count=10&q=' + this.state.keywords;
+    var baseURL = ServiceURL.book_search + '?count=30&q=' + this.state.keywords;
 
-    // 请求数据前 loading
+    // 请求数据前开启 loading 动画
     this.setState({
       show: false
     });
 
-    // 通过关键字从豆瓣API，请求10条book数据
+    // 每次请求30条 book 数据
     Util.get(baseURL, function(data) {
 
       if(!data.books || !data.books.length) {
@@ -123,7 +123,7 @@ export default class extends Component {
 
       var books = data.books;
 
-      // 将请求的 books 数据传递给 state，并停止 loading
+      // 将请求的 books 数据传递给 dataSource，并停止 loading
       that.setState({
         dataSource: ds.cloneWithRows(books),
         show: true

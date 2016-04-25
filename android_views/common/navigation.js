@@ -20,6 +20,7 @@ export default class extends Component {
       <Navigator
 
         initialRoute={{name: 'FirstPage', component: this.props.component}}
+        
         configureScene={()=>{return Navigator.SceneConfigs.FloatFromBottom;}}
 
         renderScene={(route, navigator) => {

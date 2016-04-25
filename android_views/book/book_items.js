@@ -1,5 +1,6 @@
 /**
- * 图书列表组件
+ *  图书 item 组件
+ *  包含的信息有：图书名、出版社、作者、价格、总页数
  */
 
 import Util from '../common/util';

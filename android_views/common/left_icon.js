@@ -1,5 +1,5 @@
 /**
- * 公共头部中的回退按钮
+ *  公共头部中的回退按钮icon
  */
 
 import Util from './util';

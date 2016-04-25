@@ -1,5 +1,5 @@
 /**
- * 公共头部
+ *  公共头部
  */
 
 import Icon from './left_icon';
@@ -18,6 +18,7 @@ import React, {
 
 export default class extends Component {
 
+  // 点击回退事件
   _pop() {
     this.props.navigator.pop();
   }

@@ -1,5 +1,5 @@
 /**
- * 搜索框组件
+ *  头部搜索框组件
  */
 
 import Util from './util';

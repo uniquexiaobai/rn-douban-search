@@ -1,5 +1,6 @@
 /**
  * 图书详情页
+ * 图书信息包括：图书名、出版社、作者、价格、总页数, 图书简介、作者简介
  */
 
 import Util from '../common/util';
@@ -34,33 +35,34 @@ export default class extends Component {
         {
 
           this.state.data
+
           ?
 
+          <View>
+
+            <Header
+              navigator={this.props.navigator}
+              initObj={{
+                backName: '图书',
+                title: this.state.data.title
+              }}
+            />
+
+            <BookItem row={this.state.data}/>
+
             <View>
-
-              <Header
-                navigator={this.props.navigator}
-                initObj={{
-                  backName: '图书',
-                  title: this.state.data.title
-                }}
-              />
-
-              <BookItem row={this.state.data}/>
-
-              <View>
-                <Text style={[styles.title]}>图书简介</Text>
-                <Text style={[styles.text]}>{this.state.data.summary}</Text>
-              </View>
-
-              <View>
-                <Text style={[styles.title]}>作者简介</Text>
-                <Text style={[styles.text]}>{this.state.data.author_intro}</Text>
-              </View>
-
-              <View style={{height:50}}></View>
-
+              <Text style={[styles.title]}>图书简介</Text>
+              <Text style={[styles.text]}>{this.state.data.summary}</Text>
             </View>
+
+            <View>
+              <Text style={[styles.title]}>作者简介</Text>
+              <Text style={[styles.text]}>{this.state.data.author_intro}</Text>
+            </View>
+
+            <View style={{height:50}}></View>
+
+          </View>
 
           : Util.loading
 
@@ -70,7 +72,7 @@ export default class extends Component {
     );
   }
 
-  // 页面加载完成后请求书籍的详细信息
+  // 页面完成后根据图书的 id 查询图书详细信息
   componentDidMount() {
 
     var id = this.props.id;
