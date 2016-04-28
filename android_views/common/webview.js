@@ -13,6 +13,7 @@ import React, {
 
 export default class extends Component {
 
+
   render() {
 
     return (
@@ -27,11 +28,10 @@ export default class extends Component {
         />
 
         <WebView
-          contentInset={{top: -40}}
           startInLoadingState={true}
           style={{
             width: Util.size.width,
-            height: Util.size.height - 50
+            height: Util.size.height,
           }}
           url={this.props.url}
         >

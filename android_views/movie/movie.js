@@ -26,9 +26,9 @@ export default class extends Component {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     this.state = {
-      dataSource: ds.cloneWithRows([]),
-      keywords: '幸福',
-      show: false
+      dataSource: ds.cloneWithRows([]),                // 承载搜索到的 movies 信息数组
+      keywords: '西游记',                                // 搜索关键字
+      show: false                                      // 控制 loading 动画开关
     };
 
   }
@@ -66,26 +66,30 @@ export default class extends Component {
 
   }
 
+  // 页面加载完成后，获取数据
   componentDidMount() {
     this._getData();
   }
 
+  // 搜索框中内容变化时触发
   _changeText(val) {
     this.setState({
       keywords: val
     });
   }
 
+  // 搜素按钮点击后触发，获取数据
   _search() {
     this._getData();
   }
 
+  // 定义渲染电影 item 的模板
   _renderRow(row) {
 
-    var casts = row.casts;
+    var casts = row.casts;                          // 获取主演信息
     var names = [];
 
-    for(var i in casts) {
+    for(var i in casts) {                           // 遍历主演的姓名，放入 names 数组中
       names.push(casts[i].name);
     }
 
@@ -103,7 +107,7 @@ export default class extends Component {
           </Text>
 
           <Text style={styles.textWidth} numberOfLines={1}>
-            演员： {names}
+            演员： {names.join('、')}
           </Text>
 
           <Text style={styles.textWidth} numberOfLines={1}>
@@ -115,7 +119,7 @@ export default class extends Component {
           </Text>
 
           <Text style={styles.textWidth} numberOfLines={1}>
-            标签： {row.genres}
+            标签： {row.genres.join('、')}
           </Text>
 
           <TouchableOpacity
@@ -132,16 +136,19 @@ export default class extends Component {
 
   }
 
+  // 根据关键字，从豆瓣 API 请求数据
   _getData() {
 
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     var that = this;
-    var baseURL = ServiceURL.movie_search + '?count=10&q=' + this.state.keywords;
+    var baseURL = ServiceURL.movie_search + '?count=30&q=' + this.state.keywords;
 
+    // 请求数据前开启 loading 动画
     this.setState({
       show: false
     });
 
+    // 每次请求30条 movies 数据
     Util.get(baseURL, function(data) {
 
       if(!data.subjects || !data.subjects.length) {
@@ -160,6 +167,7 @@ export default class extends Component {
 
   }
 
+  // 点击详情按钮时触发事件
   _goDouBan(title, url) {
 
     this.props.navigator.push({
