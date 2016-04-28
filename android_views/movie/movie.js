@@ -5,7 +5,7 @@
 import Search from '../common/search';
 import Util from '../common/util';
 import ServiceURL from '../common/service';
-import webView from '../common/webview';
+import WebView from '../common/webview';
 
 import React, {
   Component,
@@ -20,7 +20,7 @@ import React, {
 
 export default class extends Component {
 
-  construct(props) {
+  constructor(props) {
 
     super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -39,12 +39,15 @@ export default class extends Component {
       <ScrollView style={styles.flex_1}>
 
         <View style={[styles.search, styles.row]}>
-          <View>
-            <Search placeholder="请输入电影名称" onChangeText={this._changeText}/>
+
+          <View style={styles.flex_1}>
+            <Search placeholder="请输入电影的名称" onChangeText={this._changeText.bind(this)}/>
           </View>
-          <TouchableOpacity style={styles.btn} onPress={this._search}>
+
+          <TouchableOpacity style={styles.btn} onPress={this._search.bind(this)}>
             <Text style={styles.fontFFF}>搜索</Text>
           </TouchableOpacity>
+
         </View>
 
         {
@@ -52,7 +55,7 @@ export default class extends Component {
           ?
             <ListView
               dataSource={this.state.dataSource}
-              renderRow={this._renderRow}
+              renderRow={this._renderRow.bind(this)}
             />
           :
             Util.loading
@@ -116,10 +119,10 @@ export default class extends Component {
           </Text>
 
           <TouchableOpacity
-          style={styles.goDou}
-          onPress={this._goDouBan.bind(this, row.title, row.alt)}
+            style={styles.goDou}
+            onPress={this._goDouBan.bind(this, row.title, row.alt)}
           >
-          <Text>详情</Text>
+            <Text>详情</Text>
           </TouchableOpacity>
 
         </View>
@@ -147,7 +150,7 @@ export default class extends Component {
 
       var subjects = data.subjects;
       that.setState({
-        dataSource: ds.cloneWidthRows(subjects),
+        dataSource: ds.cloneWithRows(subjects),
         show: true
       });
 
@@ -165,7 +168,7 @@ export default class extends Component {
         backName: '电影',
         title: title,
         url: url
-      };
+      }
     });
 
   }
@@ -213,7 +216,7 @@ const styles = StyleSheet.create({
 
   item: {
     marginTop: 10,
-    height: 140,
+    height: 155,
     paddingTop: 15,
     paddingLeft: 10,
     borderBottomWidth: Util.pixel,
@@ -229,7 +232,7 @@ const styles = StyleSheet.create({
     borderWidth: Util.pixel,
     borderColor: '#3c9bfd',
     marginLeft: 30,
-    marginTop: 10,
+    marginTop: 5,
     borderRadius: 3,
   },
 

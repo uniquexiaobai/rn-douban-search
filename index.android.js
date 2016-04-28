@@ -12,13 +12,14 @@ import React, {
 } from 'react-native';
 
 import Book from './android_views/book/book_list';
+import Movie from './android_views/movie/movie';
 import Navigation from './android_views/common/navigation';
 
 
 class doubanSearch extends Component {
   render() {
     return (
-      <Navigation component={Book}/>
+      <Navigation component={Movie}/>
     );
   }
 };

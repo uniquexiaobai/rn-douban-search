@@ -2,8 +2,8 @@
  * 使用WebView封装了豆瓣的WebApp页面
  */
 
-import Util = require('./util');
-import Header = require('./header');
+import Util from './util';
+import Header from './header';
 
 import React, {
   Component,
@@ -20,7 +20,7 @@ export default class extends Component {
 
         <Header
           navigator={this.props.navigator}
-          initOjb={{
+          initObj={{
             backName: this.props.backName,
             title: this.props.title
           }}
@@ -30,7 +30,7 @@ export default class extends Component {
           contentInset={{top: -40}}
           startInLoadingState={true}
           style={{
-            width: Util.size.width
+            width: Util.size.width,
             height: Util.size.height - 50
           }}
           url={this.props.url}
