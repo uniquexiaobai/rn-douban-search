@@ -14,57 +14,58 @@ import React, {
   View,
   ListView,
   ScrollView,
+  Image,
   TouchableOpacity,
 } from 'react-native';
 
 export default class extends Component {
 
-  contructor(props) {
+  constructor(props) {
 
     super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
     this.state = {
-      dataSource: ds.cloneWidthRows([]),
+      dataSource: ds.cloneWithRows([]),
       keywords: '童话',
       show: false
     };
+  }
 
-    render() {
+  render() {
 
-      return (
-        <ScrollView style={styles.flex_1}>
+    return (
+      <ScrollView style={styles.flex_1}>
 
-          <View style={[styles.search, styles.row]}>
+        <View style={[styles.search, styles.row]}>
 
-            <View style={styles.flex_1}>
-              <Search placeholder="请输入歌曲/歌手名称" onChangeText={this._changeText.bind(this)}/>
-            </View>
-
-            <TouchableOpacity style={styles.btn} onPress={this._search.bind(this)}>
-              <Text style={styles.fontFFF}>搜索</Text>
-            </TouchableOpacity>
-
+          <View style={styles.flex_1}>
+            <Search placeholder="请输入歌曲/歌手名称" onChangeText={this._changeText.bind(this)}/>
           </View>
 
-          {
-            this.state.show
-            ?
-              <ListView
-                dataSource={this.state.dataSource}
-                renderRow={this._renderRow.bind(this)}
-              />
-            :
-              Util.loading
-          }
+          <TouchableOpacity style={styles.btn} onPress={this._search.bind(this)}>
+            <Text style={styles.fontFFF}>搜索</Text>
+          </TouchableOpacity>
 
-        </ScrollView>
+        </View>
 
-      );
+        {
+          this.state.show
+          ?
+            <ListView
+              dataSource={this.state.dataSource}
+              renderRow={this._renderRow.bind(this)}
+            />
+          :
+            Util.loading
+        }
 
-    }
+      </ScrollView>
+
+    );
 
   }
+
 
   // 页面加载完成后，获取数据
   componentDidMount() {

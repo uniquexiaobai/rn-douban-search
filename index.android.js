@@ -13,13 +13,14 @@ import React, {
 
 import Book from './android_views/book/book_list';
 import Movie from './android_views/movie/movie';
+import Music from './android_views/music/music';
 import Navigation from './android_views/common/navigation';
 
 
 class doubanSearch extends Component {
   render() {
     return (
-      <Navigation component={Movie}/>
+      <Navigation component={Music}/>
     );
   }
 };
