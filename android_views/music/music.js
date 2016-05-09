@@ -33,37 +33,36 @@ export default class extends Component {
   }
 
   render() {
-
     return (
-      <ScrollView style={styles.flex_1}>
 
-        <View style={[styles.search, styles.row]}>
+        <ScrollView style={styles.flex_1}>
 
-          <View style={styles.flex_1}>
-            <Search placeholder="请输入歌曲/歌手名称" onChangeText={this._changeText.bind(this)}/>
+          <View style={[styles.search, styles.row]}>
+
+            <View style={styles.flex_1}>
+              <Search placeholder="请输入歌曲/歌手名称" onChangeText={this._changeText.bind(this)}/>
+            </View>
+
+            <TouchableOpacity style={styles.btn} onPress={this._search.bind(this)}>
+              <Text style={styles.fontFFF}>搜索</Text>
+            </TouchableOpacity>
+
           </View>
 
-          <TouchableOpacity style={styles.btn} onPress={this._search.bind(this)}>
-            <Text style={styles.fontFFF}>搜索</Text>
-          </TouchableOpacity>
+          {
+            this.state.show
+            ?
+              <ListView
+                dataSource={this.state.dataSource}
+                renderRow={this._renderRow.bind(this)}
+              />
+            :
+              Util.loading
+          }
 
-        </View>
-
-        {
-          this.state.show
-          ?
-            <ListView
-              dataSource={this.state.dataSource}
-              renderRow={this._renderRow.bind(this)}
-            />
-          :
-            Util.loading
-        }
-
-      </ScrollView>
+        </ScrollView>
 
     );
-
   }
 
 
@@ -165,7 +164,6 @@ export default class extends Component {
 };
 
 const styles = StyleSheet.create({
-
   flex_1: {
     flex: 1,
     marginTop: 5,

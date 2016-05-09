@@ -66,22 +66,10 @@ export default class extends Component {
 
   }
 
-  // 每条图书条目点击事件，点击后路由切换到图书详情页
-  _loadPage(id) {
-
-    this.props.navigator.push({
-      component: BookDetail,
-      passProps: {
-        id: id
-      }
-    });
-
-  }
-
   // 定义渲染图书 item 的模板
   _renderRow(row) {
     return (
-      <BookItem row={row} onPress={this._loadPage.bind(this, row.id)}/>
+      <BookItem row={row} onPress={this.props.goDetail.bind(this, row.id)}/>
     );
   }
 

@@ -11,18 +11,18 @@ import React, {
   View,
 } from 'react-native';
 
-import Book from './android_views/book/book_list';
-import Movie from './android_views/movie/movie';
-import Music from './android_views/music/music';
 import Navigation from './android_views/common/navigation';
+import App from './android_views/App';
 
 
 class doubanSearch extends Component {
+
   render() {
     return (
-      <Navigation component={Music}/>
+      <Navigation component={App}/>
     );
   }
+
 };
 
 const styles = StyleSheet.create({
