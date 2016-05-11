@@ -28,22 +28,23 @@ export default class extends Component {
     var obj = this.props.initObj;
 
     return (
-      <View style={[styles.header, styles.row, styles.center]}>
+      <View style={styles.header}>
 
-        <TouchableOpacity style={[styles.row, styles.center]} onPress={this._pop.bind(this)}>
+        <TouchableOpacity style={styles.barIcon} onPress={this._pop.bind(this)}>
           <Icon/>
           <Text style={styles.fontFFF}>{obj.backName}</Text>
         </TouchableOpacity>
 
-        <View style={[styles.title, styles.center]}>
-
+        <View style={[styles.title]}>
           <Text
-            style={[styles.fontFFF, styles.titlePos]}
+            style={[styles.fontFFF]}
             numberOfLines={1}
           >
             {obj.title}
           </Text>
-
+        </View>
+        
+        <View style={{flex: 1}}>
         </View>
 
       </View>
@@ -57,22 +58,32 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 50,
-    backgroundColor: '#3497FF'
+    backgroundColor: '#3497FF',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  barIcon: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  title: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 5,
+    marginRight: 5,
   },
   fontFFF: {
     color: '#fff',
     fontSize: 17,
     fontWeight: 'bold'
   },
-  title: {
-    flex: 1
-  },
-  titlePos: {
-    marginLeft: -20,
-    width: 200
-  },
   center: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'red',
   }
 });
