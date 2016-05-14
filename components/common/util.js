@@ -7,6 +7,7 @@ import PixelRatio from 'PixelRatio';
 
 import React, {
   ProgressBarAndroid,
+  ActivityIndicatorIOS,
   Platform,
 } from 'react-native';
 
@@ -26,12 +27,19 @@ export default {
   },
 
   /**
-   * Android 加载动画
+   * Anroid/ios 加载动画
+   * Platform.OS 在此判断响应的平台
    */
-  loading: <ProgressBarAndroid
-    styleAttr="Inverse"
-    color="red"
-  />,
+  loading: (Platform.OS === 'ios')
+    ? 
+      <ActivityIndicatorIOS
+        color="red"
+      />
+    :
+      <ProgressBarAndroid
+        styleAttr="Inverse"
+        color="red"
+      />,
 
   /**
    * 基于fetch的get方法

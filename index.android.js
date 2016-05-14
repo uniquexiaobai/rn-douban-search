@@ -1,6 +1,6 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * 豆瓣搜索
+ * https://github.com/uniquexiaobai/rn-douban-search.git
  */
 
 import React, {
@@ -11,8 +11,8 @@ import React, {
   View,
 } from 'react-native';
 
-import Navigation from './android_views/common/navigation';
-import App from './android_views/App';
+import Navigation from './components/common/navigation';
+import App from './components/App';
 
 
 class doubanSearch extends Component {
