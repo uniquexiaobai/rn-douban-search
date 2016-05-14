@@ -7,6 +7,7 @@ import PixelRatio from 'PixelRatio';
 
 import React, {
   ProgressBarAndroid,
+  Platform,
 } from 'react-native';
 
 export default {
