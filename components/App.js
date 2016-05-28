@@ -13,6 +13,7 @@ import React, {
   StyleSheet,
   View,
   BackAndroid,
+  StatusBar,
 } from 'react-native';
 
 export default class extends Component {
@@ -85,6 +86,9 @@ export default class extends Component {
     return (
 
       <View style={{flex: 1}}>
+        <StatusBar
+          hidden={true}
+        />
         {this.getTabComponent()}
         <TabBar
           tab={this.state.tab}
