@@ -31,9 +31,10 @@ export default {
    * Platform.OS 在此判断响应的平台
    */
   loading: (Platform.OS === 'ios')
-    ? 
+    ?
       <ActivityIndicatorIOS
         color="red"
+        size="large"
       />
     :
       <ProgressBarAndroid
