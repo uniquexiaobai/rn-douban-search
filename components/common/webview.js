@@ -33,7 +33,7 @@ export default class extends Component {
             width: Util.size.width,
             height: Util.size.height,
           }}
-          url={this.props.url}
+          source={{uri: this.props.url}}
         >
         </WebView>
 
