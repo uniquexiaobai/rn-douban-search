@@ -3,4 +3,4 @@
 
 ## 完成中...
 
-![](./screenshot/test1.gif)
+![](./screenshot/douban1.gif)
