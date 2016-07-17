@@ -6,3 +6,21 @@
 
 ## 截图：
 ![](./screenshot/douban1.gif)
+
+## 安装及运行：
+##### 1. 下载
+```bash
+$ git clone git@github.com:uniquexiaobai/rn-douban-search.git
+```
+##### 2. 安装依赖
+```bash
+$ cd rn-douban-search && npm install
+```
+##### 3. 运行
+- Android版运行：
+```bash
+$ react-native start
+$ react-native run-android
+```
+- IOS版运行：<br/>
+双击 `~/ios/doubanSearch.xcodeproj` 文件，默认用 `Xcode` 打开，点击运行即可
