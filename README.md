@@ -2,7 +2,7 @@
 
 学习《React Native入门与实战》豆瓣搜索的案例，用ES2015重构并使其跨平台，增加详细的注释
 
-### [Android版下载](http://workhard.top/dousou.apk)
+### [Android版下载](http://workhard.top/apk/douban.apk)
 
 ## 截图：
 ![](./screenshot/douban2.gif)
