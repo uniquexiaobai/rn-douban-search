@@ -1,11 +1,11 @@
 # rn-douban-search
 
-学习《React Native入门与实战》豆瓣搜索的案例，移植到Android并用ES2015重写，增加详细的注释
+学习《React Native入门与实战》豆瓣搜索的案例，用ES2015重构并使其跨平台，增加详细的注释
 
 ### [Android版下载](http://workhard.top/dousou.apk)
 
 ## 截图：
-![](./screenshot/douban1.gif)
+![](./screenshot/douban2.gif)
 
 ## 安装及运行：
 ##### 1. 下载
@@ -23,4 +23,4 @@ $ react-native start
 $ react-native run-android
 ```
 - IOS版运行：<br/>
-双击 `~/ios/doubanSearch.xcodeproj` 文件，默认用 `Xcode` 打开，点击运行即可
+双击 `~/ios/doubanSearch.xcodeproj` 文件，默认用 `Xcode` 打开，点击运行按钮即可
