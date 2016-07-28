@@ -6,6 +6,7 @@
 
 ## 截图：
 ![](./screenshot/douban2.gif)
+![](./screenshot/douban-ios.png)
 
 ## 安装及运行：
 ##### 1. 下载
