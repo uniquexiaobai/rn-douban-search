@@ -2,11 +2,13 @@
 
 学习《React Native入门与实战》豆瓣搜索的案例，用ES2015重构并使其跨平台，增加详细的注释
 
-### [Android版下载](http://workhard.top/apk/douban.apk)
+## [Android版下载](http://workhard.top/apk/douban.apk)
+## Android版扫一扫下载
+![Android二维码](./screenshot/douban-QR.png)
 
-## 截图：
-![](./screenshot/douban2.gif)
-![](./screenshot/douban-ios.png)
+## 运行截图：
+![Android截图](./screenshot/douban2.gif)
+![IOS截图](./screenshot/douban-ios.png)
 
 ## 安装及运行：
 ##### 1. 下载
